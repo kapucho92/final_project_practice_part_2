@@ -6,10 +6,7 @@ def post_new_order(body):
     return requests.post(configuration.URL_SERVICE + configuration.CREATE_NEW_ORDER,
                          json=body,
                          headers=data.headers)
-response = post_new_order(data.order_body)
-order_track = response.json().get('track')
-
-def get_order_by_track():
+def get_order_by_track(order_track):
     return requests.get(configuration.URL_SERVICE + configuration.FIND_ORDER_FROM_TRACKER + str(order_track),
                         headers=data.headers)
     
